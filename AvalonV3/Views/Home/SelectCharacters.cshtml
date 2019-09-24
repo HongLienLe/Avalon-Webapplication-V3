@@ -1,0 +1,48 @@
+﻿@model AvalonV3.Models.Character
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    var characters = Model;
+}
+
+<div class="text-center">
+    <h1> Choose your player</h1>
+</div>
+<div class="text-center">
+
+  @using (Html.BeginForm())
+  {
+
+   <div class="col-sm">
+        <div class="card mb-3">
+            <h3 class="card-header">@Model.Name</h3>
+            <div class="text-center">
+                <img style="width: 100px;" class="text-center" src="@Url.Content(Model.ImagePath)" alt="Card image">
+                <div class="card-body">
+                    <p class="card-text"> @Model.Team</p>
+                    <p>@Model.Description</p>
+                    <div>
+                        <p>@Html.LabelFor(x => x.ChoosenPlayer)</p>
+                        True
+                        <p>@Html.RadioButtonFor(x => x.ChoosenPlayer, bool.TrueString)</p>
+                        False
+                        <p>@Html.RadioButtonFor(x => x.ChoosenPlayer, bool.FalseString)</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+   </div>
+                <button type="submit" class="btn btn-success btn-lg margin-right">
+                    <span class="glyphicon glyphicon-save"></span> Submit
+                </button>
+  }
+  </div>
+
+
+
+
+
+
+
+

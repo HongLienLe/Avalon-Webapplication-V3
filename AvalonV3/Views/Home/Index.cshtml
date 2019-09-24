@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AvalonV3.Models.Character>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1> Choose your player</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+
+@foreach (var character in Model)
+{ 
+   <div class="col-sm">
+        <div class="card mb-3">
+            <h3 class="card-header">@character.Name</h3>
+            <div class="text-center">
+                <img style="width: 100px;" class="text-center" src="@Url.Content(character.ImagePath)" alt="Card image">
+                <div class="card-body">
+                    <p class="card-text"> @character.Team</p>
+                    <p>@character.Description</p>
+                    <p>In play = @character.ChoosenPlayer</p>
+                    <div class="text-center">
+                         <a href="@Url.Action("SelectCharacters", new { id = character.Id })" class="btn btn-warning btn-sm margin-right">
+                        <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Select</span>
+                    </a>
+                    </div>
+                </div>
+             </div>
+        </div>
+   </div>
+}
+  </div>
+</div>
+
+
+
+
